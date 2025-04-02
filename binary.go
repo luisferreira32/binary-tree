@@ -27,6 +27,7 @@ type Node[T Comparable] struct {
 // recursively checks their left and right children for equality.
 //
 // This function is prone to stack overflow for large trees due to deep recursion.
+// Please use FastEquals for large trees.
 func Equals[T Comparable](a, b *Node[T]) bool {
 	if a == nil && b == nil {
 		return true
@@ -40,6 +41,10 @@ func Equals[T Comparable](a, b *Node[T]) bool {
 	return Equals(a.Left, b.Left) && Equals(a.Right, b.Right)
 }
 
+// FastEquals checks if two binary tree nodes are equal.
+//
+// It compares the structure and values of the nodes iteratively.
+// It is the pretty version of the Equals function.
 func FastEquals[T Comparable](a, b *Node[T]) bool {
 	if a == nil && b == nil {
 		return true
